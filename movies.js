@@ -10,7 +10,7 @@ const movies = [
         "Year": "2011",
         "Rating": "9.5",
         "Type": "series",
-        "Season" : "7",
+        "Season": "7",
     },
     {
         "Title": "The Wolf of Wall Street",
@@ -23,6 +23,23 @@ const movies = [
         "Year": "2014",
         "Rating": "8.0",
         "Type": "series",
-        "Season" : "3",
+        "Season": "3",
     },
-]
+];
+
+class Movie {
+    constructor(title, year, rating, type) {
+        this.title = title;
+        this.year = year;
+        this.rating = rating;
+        this.type = type;
+    }
+};
+
+class TvSerie extends Movie { 
+    constructor(title, year, rating, type, season) {
+        super(title, year, rating, type);
+        this.season = season;
+    }
+}
+
