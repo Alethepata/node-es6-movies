@@ -80,7 +80,11 @@ const genres = () => {
     return genre
 }
 
-const moviesFilters = genre => movies.filter(movie => movie.Genre === genre);
+const moviesFilters = genre => {
+    const moviefiltered= []
+    movies.filter(movie => movie.Genre === genre ? moviefiltered.push(movie.Title) : '')
+    return moviefiltered.toString('')
+};
 
 // console.log(votes('Crime'));
 // console.log(genres());
