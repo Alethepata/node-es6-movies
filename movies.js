@@ -2,14 +2,14 @@ const movies = [
     {
         "Title": "Avatar",
         "Year": "2009",
-        "Genre": "Action, Adventure, Fantasy",
+        "Genre": "Adventure",
         "Rating": "7.9",
         "Type": "movie",
     },
     {
         "Title": "Game of Thrones",
         "Year": "2011",
-        "Genre": "Adventure, Drama, Fantasy",
+        "Genre": "Adventure",
         "Rating": "9.5",
         "Type": "series",
         "Season": "7",
@@ -17,14 +17,14 @@ const movies = [
     {
         "Title": "The Wolf of Wall Street",
         "Year": "2013",
-        "Genre": "Biography, Comedy, Crime",
+        "Genre": "Crime",
         "Rating": "8.2",
         "Type": "movie",
     },
     {
         "Title": "Gotham",
         "Year": "2014",
-        "Genre": "Action, Crime, Drama",
+        "Genre": "Crime",
         "Rating": "8.0",
         "Type": "series",
         "Season": "3",
@@ -42,6 +42,7 @@ class Movie {
     toString() {
         return `${this.title} è un film di genere ${this.genre}. E' stato rilasciato nel ${this.year} ed ha un voto di ${this.rating}`
     }
+
 };
 
 class TvSerie extends Movie { 
@@ -51,11 +52,34 @@ class TvSerie extends Movie {
     }
     toString() {
         return `${this.title} è una serie tv di genere ${this.genre}. La prima stagione è stata rilasciata nel ${this.year} ed in totale sono state prodotte ${this.season} stagioni. Ha un voto di ${this.rating}`
-    }
+    };
 };
 
-const movie = new Movie('Batman', '2002', 'mistero', '9.0', 'movie');
-const serie = new TvSerie('Narcos', '2015', 'Crime', '9.0', 'series','2');
+const arrayMapped = movies.map((movie) => movie.Type == 'movie' ? new Movie({ ...movie }) : new TvSerie({ ...movie }));
 
-console.log(movie.toString());
-console.log(serie.toString());
+const vote = [];
+let somma = 0;
+
+const votes = genre => {
+    movies.map((movie) => movie.Genre == genre ? vote.push(movie.Rating) : '');
+    for (var i = 0; i < vote.length; i++) {
+        somma += parseInt(vote[i]);
+    }
+    let res = somma / vote.length;
+    return res
+
+}
+
+const genres = () => {
+    let genre = [];
+    movies.forEach(element => {
+        if (!genre.includes(element.Genre)) {
+            genre.push(element.Genre);
+        }
+    });
+    return genre
+}
+
+// console.log(votes('Crime'));
+console.log(genres())
+
