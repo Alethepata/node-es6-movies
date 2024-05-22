@@ -80,6 +80,9 @@ const genres = () => {
     return genre
 }
 
+const moviesFilters = genre => movies.filter(movie => movie.Genre === genre);
+
 // console.log(votes('Crime'));
-console.log(genres())
+// console.log(genres());
+console.log(moviesFilters('Adventure'));
 
