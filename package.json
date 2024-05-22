@@ -1,0 +1,12 @@
+{
+  "name": "node-es6-movies",
+  "version": "1.0.0",
+  "description": "movies",
+  "main": "movies.js",
+  "scripts": {
+    "dev": "nodemon movies.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
